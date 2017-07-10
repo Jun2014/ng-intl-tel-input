@@ -25,8 +25,8 @@ angular.module('ngIntlTelInput', []);angular.module('ngIntlTelInput')
     }];
   });
 angular.module('ngIntlTelInput')
-  .directive('ngIntlTelInput', ['ngIntlTelInput', '$log', '$window', '$parse',
-    function (ngIntlTelInput, $log, $window, $parse) {
+  .directive('ngIntlTelInput', ['ngIntlTelInput', '$log', '$window', '$parse','$timeout',
+    function (ngIntlTelInput, $log, $window, $parse, $timeout) {
       return {
         restrict: 'A',
         require: 'ngModel',
@@ -49,7 +49,7 @@ angular.module('ngIntlTelInput')
                 return ctrl.$setViewValue(elm.val());
               }, 0);
           }
-          
+
           // Set Selected Country Data.
           function setSelectedCountryData(model) {
             var getter = $parse(model);
