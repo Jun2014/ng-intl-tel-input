@@ -85,6 +85,8 @@ angular.module('ngIntlTelInput')
           });
           elm.on('blur keyup change', function(event) {
             ctrl.$validate();
+            elm.intlTelInput('setNumber', elm.val());
+            return ctrl.$setViewValue(elm.val());
           });
           // Set input value to model value and trigger evaluation.
           ctrl.$formatters.push(function (value) {
