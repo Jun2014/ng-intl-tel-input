@@ -43,13 +43,6 @@ angular.module('ngIntlTelInput')
           // Initialize.
           ngIntlTelInput.init(elm);
 
-          if (ctrl) {
-              $timeout(function() {
-                elm.intlTelInput('setNumber', elm.val());
-                return ctrl.$setViewValue(elm.val());
-              }, 0);
-          }
-
           // Set Selected Country Data.
           function setSelectedCountryData(model) {
             var getter = $parse(model);
@@ -95,6 +88,8 @@ angular.module('ngIntlTelInput')
                 value = '+' + value;
               }
               elm.intlTelInput('setNumber', value);
+              // Set the view to the number
+              ctrl.$setViewValue(value);
             }
             return value;
           });
